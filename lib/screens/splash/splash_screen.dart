@@ -10,23 +10,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  int currentPage = 0;
-
-  List<Map<String, String>> splashData = [
-    {
-      "text": "Bem Vindo ao Comunik! \nVamos começar!",
-      "image": "assets/images/welcome.svg"
-    },
-    {
-      "text":
-          "We help people connect with store \naround United State of America",
-      "image": "assets/images/confirmed.svg"
-    },
-    {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
-      "image": "assets/images/chat.svg"
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -41,21 +24,16 @@ class _SplashScreenState extends State<SplashScreen> {
               Expanded(
                 flex: 3,
                 child: Container(
+                  width: double.infinity,
                   decoration: BoxDecoration(
                       color: kSecondaryBackgroundColor,
                       borderRadius:
                           BorderRadius.only(bottomLeft: Radius.circular(200))),
-                  child: PageView.builder(
-                    onPageChanged: (value) {
-                      setState(() {
-                        currentPage = value;
-                      });
-                    },
-                    itemCount: splashData.length,
-                    itemBuilder: (context, index) => SplashContent(
-                      text: splashData[index]['text'],
-                      image: splashData[index]['image'],
-                    ),
+                  child: SplashContent(
+                    slogan:
+                        'Bem Vindo ao Comunik!\nPromovendo a inclusão através da comunicação!',
+                    text: 'Vamos começar?',
+                    image: 'assets/images/welcome.svg',
                   ),
                 ),
               ),
@@ -67,15 +45,16 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     children: [
                       Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                            splashData.length, (index) => buildDot(index)),
-                      ),
-                      Spacer(
-                        flex: 2,
-                      ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: List.generate(
+                      //       splashData.length, (index) => buildDot(index)),
+                      // ),
+                      // Spacer(
+                      //   flex: 2,
+                      // ),
                       SizedBox(
+                        width: getProportionateScreenWidth(250),
                         height: getProportionateScreenHeight(50),
                         child: FlatButton(
                             color: kPrimaryColor,
@@ -87,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                   ));
                             },
                             child: Text(
-                              'Continuar',
+                              'Começar!',
                               style: TextStyle(
                                   fontSize: getProportionateScreenWidth(15),
                                   color: Colors.white),
@@ -102,18 +81,6 @@ class _SplashScreenState extends State<SplashScreen> {
               )
             ],
           ))),
-    );
-  }
-
-  AnimatedContainer buildDot(int index) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
-      margin: EdgeInsets.only(right: 5),
-      height: 6,
-      width: currentPage == index ? 20 : 6,
-      decoration: BoxDecoration(
-          color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
-          borderRadius: BorderRadius.circular(3)),
     );
   }
 }

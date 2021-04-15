@@ -1,5 +1,9 @@
 import 'package:comunik_app/constants.dart';
 import 'package:comunik_app/drawer/drawer.dart';
+import 'package:comunik_app/models/setor.dart';
+import 'package:comunik_app/models/unidade.dart';
+import 'package:comunik_app/screens/attendance/attendance_screen.dart';
+import 'package:comunik_app/screens/followup/follou_up_screen.dart';
 import 'package:comunik_app/widgets/background.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text('Históricos Últimos Atendimentos'),
+                  child: Text('Últimos Atendimentos'),
                 ),
                 SizedBox(
                   height: 20,
@@ -44,14 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         width: 10,
                       ),
-                      buildCardHistorico('N° 782927362',
-                          'Unidade Atendimento 1', 'Escpecialidade', true),
-                      buildCardHistorico('N° 782927362',
-                          'Unidade Atendimento 2', 'Escpecialidade', false),
-                      buildCardHistorico('N° 782927362',
-                          'Unidade Atendimento 3', 'Escpecialidade', true),
-                      buildCardHistorico('N° 782927362',
-                          'Unidade Atendimento 4', 'Escpecialidade', true),
+                      buildCardHistorico('N° 782927362', unidades[2].unidade,
+                          setores[1].setor, true),
+                      buildCardHistorico('N° 679812349', unidades[0].unidade,
+                          setores[0].setor, false),
+                      buildCardHistorico('N° 012367234', unidades[1].unidade,
+                          setores[2].setor, true),
+                      buildCardHistorico('N° 891672381', unidades[2].unidade,
+                          setores[2].setor, true),
                       SizedBox(
                         width: 10,
                       )
@@ -106,33 +110,42 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             flex: 2,
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20)),
-                  color: kPrimaryBackgroundColor),
-              child: Column(
-                children: [
-                  Text(
-                    value,
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    resolvido ? 'Resolvidos' : 'Em Andamento',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: resolvido
-                            ? Colors.green[700].withOpacity(.6)
-                            : Colors.orange[700].withOpacity(.6)),
-                  ),
-                  Spacer(),
-                  Text(
-                    'Mais Informações',
-                  ),
-                  Spacer(),
-                ],
+            child: InkWell(
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FollowUpScreen(),
+                    ));
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                    color: kPrimaryBackgroundColor),
+                child: Column(
+                  children: [
+                    Text(
+                      value,
+                      style: TextStyle(fontSize: 30),
+                    ),
+                    Text(
+                      resolvido ? 'Realizados' : 'Em Andamento',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: resolvido
+                              ? Colors.green[700].withOpacity(.6)
+                              : Colors.orange[700].withOpacity(.6)),
+                    ),
+                    Spacer(),
+                    Text(
+                      'Mais Informações',
+                    ),
+                    Spacer(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -214,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 20,
               ),
               Text(
-                resolvido ? 'Resolvido' : "Em Progresso",
+                resolvido ? 'Finalizado' : "Em Progresso",
                 style: TextStyle(
                   color: resolvido
                       ? Colors.green[700].withOpacity(0.6)

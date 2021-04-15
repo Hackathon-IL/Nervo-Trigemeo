@@ -19,49 +19,56 @@ class ChatMessage {
 
 List demeChatMessages = [
   ChatMessage(
-    text: "Olá, bom dia",
-    messageType: ChatMessageType.text,
-    messageStatus: MessageStatus.viewed,
-    isSender: false,
-  ),
-  ChatMessage(
-    text: "Bom dia, dúvidas sobre tradução",
+    text: "Bom dia, dúvidas sobre atendimento médico",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: true,
   ),
   ChatMessage(
-    text: "",
-    messageType: ChatMessageType.audio,
+    text: "Qual sua necessidade?",
+    messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: false,
   ),
   ChatMessage(
-    text: "Ok! Obrigado",
+    text: "Pediatria",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: true,
   ),
   ChatMessage(
-    text: "Teste Mensagem com Erro",
+    text:
+        "Dicas sobre conseguir atendimento:\nVá para a unidade mais próxima...",
+    messageType: ChatMessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+  ),
+  ChatMessage(
+    text: "Ok! Obrigado (Teste Erro)",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.not_sent,
     isSender: true,
   ),
   ChatMessage(
-    text: "Por nada!",
+    text: "Ok, Obrigado!",
+    messageType: ChatMessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: true,
+  ),
+  ChatMessage(
+    text: "You're welcome!",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: false,
   ),
   ChatMessage(
-    text: "Tchau",
+    text: "Tchau!",
     messageType: ChatMessageType.text,
-    messageStatus: MessageStatus.not_view,
+    messageStatus: MessageStatus.viewed,
     isSender: true,
   ),
   ChatMessage(
-    text: "Tchau",
+    text: "Bye!",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.not_view,
     isSender: false,

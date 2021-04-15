@@ -1,5 +1,7 @@
 import 'package:comunik_app/constants.dart';
 import 'package:comunik_app/drawer/drawer.dart';
+import 'package:comunik_app/models/setor.dart';
+import 'package:comunik_app/models/unidade.dart';
 import 'package:comunik_app/screens/chat/chat_screen.dart';
 import 'package:comunik_app/size_config.dart';
 import 'package:comunik_app/widgets/background.dart';
@@ -13,23 +15,9 @@ class AttendanceScreen extends StatefulWidget {
 class _AttendanceScreenState extends State<AttendanceScreen> {
   double _spacing = 20;
 
-  String unidade = 'Unidade 1';
-  String especialidade = 'Especialidade 1';
+  var unidade = unidades.first;
+  var especialidade = setores.first;
   bool isForYou = false;
-
-  List<String> unidades = [
-    'Unidade 1',
-    'Unidade 2',
-    'Unidade 3',
-    'Unidade 4',
-  ];
-
-  List<String> especialidades = [
-    'Especialidade 1',
-    'Especialidade 2',
-    'Especialidade 3',
-    'Especialidade 4',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,18 +45,18 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 ),
                 Text('Localização / Unidade'),
                 Container(
-                  child: DropdownButton<String>(
+                  child: DropdownButton<Unidade>(
                       value: unidade,
                       // isExpanded: true,
-                      onChanged: (String novoItemSelecionado) {
+                      onChanged: (Unidade novoItemSelecionado) {
                         setState(() {
                           unidade = novoItemSelecionado;
                         });
                       },
-                      items: unidades.map((String dropDownStringItem) {
-                        return DropdownMenuItem<String>(
+                      items: unidades.map((Unidade dropDownStringItem) {
+                        return DropdownMenuItem<Unidade>(
                           value: dropDownStringItem,
-                          child: Text(dropDownStringItem),
+                          child: Text(dropDownStringItem.unidade),
                         );
                       }).toList()),
                 ),
@@ -96,19 +84,19 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 ),
                 Text('Especialidade Desejada'),
                 Container(
-                  child: DropdownButton<String>(
+                  child: DropdownButton<Setor>(
                       value: especialidade,
                       dropdownColor: kPrimaryBackgroundColor,
                       // isExpanded: true,
-                      onChanged: (String novoItemSelecionado) {
+                      onChanged: (Setor novoItemSelecionado) {
                         setState(() {
                           especialidade = novoItemSelecionado;
                         });
                       },
-                      items: especialidades.map((String dropDownStringItem) {
-                        return DropdownMenuItem<String>(
+                      items: setores.map((Setor dropDownStringItem) {
+                        return DropdownMenuItem<Setor>(
                           value: dropDownStringItem,
-                          child: Text(dropDownStringItem),
+                          child: Text(dropDownStringItem.setor),
                         );
                       }).toList()),
                 ),
@@ -130,23 +118,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       enabledBorder: InputBorder.none,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: _spacing,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('É para voce ou não?'),
-                    Switch(
-                        value: isForYou,
-                        activeColor: kPrimaryColor,
-                        onChanged: (value) {
-                          setState(() {
-                            isForYou = value;
-                          });
-                        })
-                  ],
                 ),
                 Spacer(
                     // flex: 6,

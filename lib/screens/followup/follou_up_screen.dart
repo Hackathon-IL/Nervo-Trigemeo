@@ -9,7 +9,7 @@ class FollowUpScreen extends StatefulWidget {
 }
 
 class _FollowUpScreenState extends State<FollowUpScreen> {
-  double height = 200;
+  double height = 50;
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -34,16 +34,16 @@ class _FollowUpScreenState extends State<FollowUpScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                buildAcompanhamento(0, 'N° 782927362', true, '05/04/2000'),
-                buildAcompanhamento(1, 'N° 782927362', true, '05/04/2000'),
-                buildAcompanhamento(2, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(3, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(4, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(5, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(6, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(7, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(8, 'N° 782927362', false, '05/04/2000'),
-                buildAcompanhamento(9, 'N° 782927362', false, '05/04/2000'),
+                buildAcompanhamento(9, 'N° 942378952', false, '05/04/2021'),
+                buildAcompanhamento(8, 'N° 523489252', false, '01/04/2021'),
+                buildAcompanhamento(7, 'N° 482348902', true, '26/03/2021'),
+                buildAcompanhamento(6, 'N° 145782378', true, '20/03/2021'),
+                buildAcompanhamento(5, 'N° 217842384', true, '18/03/2021'),
+                buildAcompanhamento(4, 'N° 312839423', true, '12/03/2021'),
+                buildAcompanhamento(3, 'N° 891672381', true, '12/03/2021'),
+                buildAcompanhamento(0, 'N° 782927362', true, '05/03/2021'),
+                buildAcompanhamento(1, 'N° 679812349', true, '07/03/2021'),
+                buildAcompanhamento(2, 'N° 012367234', true, '10/03/2021'),
               ],
             ),
           )
@@ -57,108 +57,48 @@ class _FollowUpScreenState extends State<FollowUpScreen> {
       onTap: () {
         currentIndex = index;
         setState(() {
-          height == 200 ? height = 50 : height = 200;
+          height == 50 ? height = 290 : height = 50;
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 1000),
-        margin: EdgeInsets.only(left: 20, bottom: 20, right: 20),
-        height: currentIndex == index ? height : 50,
-        padding: EdgeInsets.all(10),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: kPrimaryBackgroundColor,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-                color: kPrimaryColor.withOpacity(0.4),
-                offset: Offset(5, 5),
-                blurRadius: 5)
-          ],
-        ),
-        child: currentIndex != index
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 12,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: resolvido
-                            ? Colors.green[700].withOpacity(0.6)
-                            : Colors.orange[700].withOpacity(.6)),
-                  ),
-                  Text(
-                    text,
-                    style: TextStyle(color: kPrimaryColor),
-                  ),
-                  Text('-'),
-                  Text(data),
-                  Icon(
-                    Icons.arrow_drop_down,
-                    color: kPrimaryColor,
-                  )
-                ],
-              )
-            : SizedBox(
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: 12,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: resolvido
-                                  ? Colors.green[700].withOpacity(0.6)
-                                  : Colors.orange[700].withOpacity(.6)),
-                        ),
-                        Text(
-                          text,
-                          style: TextStyle(color: kPrimaryColor),
-                        ),
-                        Text('-'),
-                        Text(data),
-                        Icon(
-                          Icons.arrow_drop_down,
-                          color: kPrimaryColor,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          resolvido
-                              ? Icons.check_circle_outline
-                              : Icons.radio_button_unchecked_outlined,
-                          color: resolvido
-                              ? Colors.green[700].withOpacity(0.6)
-                              : Colors.orange[700].withOpacity(.6),
-                          size: 16,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          resolvido ? 'Resolvido' : "Em Progresso",
-                          style: TextStyle(
-                            color: resolvido
-                                ? Colors.green[700].withOpacity(0.6)
-                                : Colors.orange[700].withOpacity(.6),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+          duration: Duration(milliseconds: 1000),
+          margin: EdgeInsets.only(left: 20, bottom: 20, right: 20),
+          height: currentIndex == index ? height : 50,
+          padding: EdgeInsets.all(10),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: kPrimaryBackgroundColor,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                  color: kPrimaryColor.withOpacity(0.4),
+                  offset: Offset(5, 5),
+                  blurRadius: 5)
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                width: 12,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: resolvido
+                        ? Colors.green[700].withOpacity(0.6)
+                        : Colors.orange[700].withOpacity(.6)),
               ),
-      ),
+              Text(
+                text,
+                style: TextStyle(color: kPrimaryColor),
+              ),
+              Text('-'),
+              Text(data),
+              Icon(
+                Icons.arrow_drop_down,
+                color: kPrimaryColor,
+              )
+            ],
+          )),
     );
   }
 }

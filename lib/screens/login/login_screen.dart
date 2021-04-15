@@ -115,7 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
               flex: 1,
               child: Column(
                 children: [
-                  Spacer(),
+                  Spacer(
+                    flex: 2,
+                  ),
                   SizedBox(
                     width: getProportionateScreenWidth(200),
                     height: getProportionateScreenHeight(50),
@@ -135,9 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.white),
                         )),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  Spacer(),
                   FlatButton(
                     child: Text(
                       'Cadastre-se',
@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   Spacer(
-                    flex: 2,
+                    flex: 1,
                   )
                 ],
               ),

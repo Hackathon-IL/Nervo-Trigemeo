@@ -6,11 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SplashContent extends StatelessWidget {
   const SplashContent({
     Key key,
+    this.slogan,
     this.text,
     this.image,
   }) : super(key: key);
 
-  final String text, image;
+  final String slogan, text, image;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +25,17 @@ class SplashContent extends StatelessWidget {
               color: kPrimaryColor,
               fontWeight: FontWeight.bold),
         ),
-        Text(
-          text,
-          textAlign: TextAlign.center,
+        Spacer(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            slogan,
+            textAlign: TextAlign.center,
+          ),
         ),
         Spacer(
-          flex: 2,
-        ),
+            // flex: 2,
+            ),
         SvgPicture.asset(
           image,
           height: getProportionateScreenHeight(265),
