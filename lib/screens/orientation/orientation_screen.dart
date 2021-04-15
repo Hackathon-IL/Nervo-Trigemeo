@@ -14,6 +14,7 @@ class OrientationScreen extends StatelessWidget {
           style: TextStyle(color: kPrimaryColor),
         ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: kSecondaryBackgroundColor,
       ),
